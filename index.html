@@ -348,7 +348,7 @@
 
         <!-- 情報表示 -->
         <div class="info-display">
-            <strong>最大出撃人数:</strong> <span id="maxDeployment">10</span>人 | 
+            <strong>最大出撃人数:</strong> <span id="maxDeployment">15</span>人 | 
             <strong>現在のメンバー:</strong> <span id="currentCount">0</span> / 20人
         </div>
 
@@ -453,8 +453,8 @@
 
         // 最大出撃人数マッピング
         const maxDeploymentMap = {
-            'normal': { 'crimsonFlower': 10, 'silverSnow': 10, 'azureMoon': 10, 'verdantWind': 10 },
-            'hard': { 'crimsonFlower': 12, 'silverSnow': 12, 'azureMoon': 12, 'verdantWind': 12 },
+            'normal': { 'crimsonFlower': 15, 'silverSnow': 15, 'azureMoon': 15, 'verdantWind': 15 },
+            'hard': { 'crimsonFlower': 15, 'silverSnow': 15, 'azureMoon': 15, 'verdantWind': 15 },
             'lunatic': { 'crimsonFlower': 15, 'silverSnow': 15, 'azureMoon': 15, 'verdantWind': 15 }
         };
 
@@ -499,6 +499,45 @@
             'バルタザール': ['ベレト', 'ベレス', 'エーデルガルト', 'ディミトリ', 'クロード', 'フェルディナント', 'ドロテア', 'ペトラ', 'ベルナデッタ', 'ヒルダ', 'ラファエル', 'イグナーツ', 'リシテア', 'マリアンヌ', 'レオニー', 'フェリクス', 'シルヴァン', 'イングリット', 'アッシュ', 'メルセデス', 'アネット', 'ドゥドゥー', 'ユーリス', 'コンスタンツェ', 'ハピ'],
             'コンスタンツェ': ['ベレト', 'ベレス', 'エーデルガルト', 'ディミトリ', 'クロード', 'フェルディナント', 'ドロテア', 'ペトラ', 'ベルナデッタ', 'ヒルダ', 'ラファエル', 'イグナーツ', 'リシテア', 'マリアンヌ', 'レオニー', 'フェリクス', 'シルヴァン', 'イングリット', 'アッシュ', 'メルセデス', 'アネット', 'ドゥドゥー', 'ユーリス', 'バルタザール', 'ハピ'],
             'ハピ': ['ベレト', 'ベレス', 'エーデルガルト', 'ディミトリ', 'クロード', 'フェルディナント', 'ドロテア', 'ペトラ', 'ベルナデッタ', 'ヒルダ', 'ラファエル', 'イグナーツ', 'リシテア', 'マリアンヌ', 'レオニー', 'フェリクス', 'シルヴァン', 'イングリット', 'アッシュ', 'メルセデス', 'アネット', 'ドゥドゥー', 'ユーリス', 'バルタザール', 'コンスタンツェ']
+        };
+
+        // クラスデータ（UnitClasses.csvから）
+        const classData = {
+            '踊り子': ['男性', '女性'],
+            'ニルヴァーナ': ['ベレト', 'ベレス'],
+            'アーマーロード': ['エーデルガルト'],
+            'カイゼリン': ['エーデルガルト'],
+            'ハイロード': ['ディミトリ'],
+            'マスターロード': ['ディミトリ'],
+            'ドラゴンロード': ['クロード'],
+            'バルバロッサ': ['クロード'],
+            '死神騎士': ['イエリッツァ'],
+            '勇者': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ソードマスター': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'アサシン': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'フォートレス': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'パラディン': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ドラゴンナイト': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ウォーリアー': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'スナイパー': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'グラップラー': ['男性', 'ディミトリ', 'クロード', 'ベレト'],
+            'ウォーロック': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ダークビショップ': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ビショップ': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'トリックスター': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'バトルモンク': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'バトルシスター': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ダークペガサス': ['女性', 'エーデルガルト', 'ベレス'],
+            'ヴァルキュリア': ['女性', 'エーデルガルト', 'ベレス'],
+            'ファルコンナイト': ['女性', 'エーデルガルト', 'ベレス'],
+            'ドラゴンマスター': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'エピタフ': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'グレートナイト': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ボウナイト': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ダークナイト': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ホーリーナイト': ['男性', '女性', 'ディミトリ', 'クロード', 'エーデルガルト', 'ベレト', 'ベレス'],
+            'ウォーマスター': ['男性', 'ディミトリ', 'クロード', 'ベレト'],
+            'グレモリィ': ['女性', 'エーデルガルト', 'ベレス']
         };
 
         // アプリケーション状態
@@ -553,6 +592,13 @@
 
             weaponOwners = {};
             supportPairs = {};
+            
+            // 初期装備とクラスを設定
+            myUnits.forEach(unit => {
+                unit.equippedWeapon = unit.equippedWeapon || 'なし';
+                unit.selectedClass = unit.selectedClass || '未選択';
+            });
+            
             renderUnits();
         }
 
@@ -576,6 +622,7 @@
             const currentWeapon = unit.equippedWeapon || 'なし';
             const weaponSelect = createWeaponSelect(unit, currentWeapon, index);
             const supportSelect = createSupportSelect(unit, index);
+            const classSelect = createClassSelect(unit, index);
             
             card.innerHTML = `
                 <div class="unit-header">
@@ -586,6 +633,10 @@
                     <button class="remove-unit-btn" onclick="removeUnit(${index})">削除</button>
                 </div>
                 <div class="unit-details">
+                    <div class="detail-row">
+                        <label>クラス:</label>
+                        ${classSelect}
+                    </div>
                     <div class="detail-row">
                         <label>武器:</label>
                         ${weaponSelect}
@@ -716,6 +767,39 @@
             renderUnits();
         }
 
+        function getAvailableClasses(unitType) {
+            const availableClasses = [];
+            for (const [className, allowedTypes] of Object.entries(classData)) {
+                if (allowedTypes.includes(unitType)) {
+                    availableClasses.push(className);
+                }
+            }
+            return availableClasses.sort();
+        }
+
+        function createClassSelect(unit, unitIndex) {
+            const availableClasses = getAvailableClasses(unit.type);
+            const currentClass = unit.selectedClass || '未選択';
+            
+            let html = '<select onchange="setClass(' + unitIndex + ', this.value)">';
+            html += `<option value="未選択" ${currentClass === '未選択' ? 'selected' : ''}>未選択</option>`;
+            
+            availableClasses.forEach(className => {
+                const isSelected = currentClass === className;
+                html += `<option value="${className}" ${isSelected ? 'selected' : ''}>${className}</option>`;
+            });
+            
+            html += '</select>';
+            return html;
+        }
+
+        function setClass(unitIndex, className) {
+            if (unitIndex < myUnits.length) {
+                myUnits[unitIndex].selectedClass = className;
+                renderUnits();
+            }
+        }
+
         function removeUnit(index) {
             const unit = myUnits[index];
             
@@ -773,6 +857,7 @@
             if (myUnits.length >= 20) return;
             
             unit.equippedWeapon = 'なし';
+            unit.selectedClass = '未選択';
             myUnits.push(unit);
             renderUnits();
             closeAddUnitModal();
